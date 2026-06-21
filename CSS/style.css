@@ -441,7 +441,10 @@ opacity:1;
     display:block;
     margin-bottom:10px;
 }
-
+.contact-buttons .btn{
+    min-width:160px;
+    text-align:center;
+}
 .contact-box h4{
     color:var(--primary);
     margin-bottom:8px;
