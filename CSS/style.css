@@ -594,3 +594,13 @@ body.light .contact-box {
 .contact-box, .skill-card, .project-card {
   will-change: transform;
 }
+/* Fix Card Overflow & GSAP Collisions */
+.contact-box, .skill-card, .project-card {
+  transform: none !important;
+  perspective: none !important;
+  transform-style: flat !important;
+}
+
+.contact-box:hover, .skill-card:hover, .project-card:hover {
+  transform: translateY(-5px) !important;
+}
