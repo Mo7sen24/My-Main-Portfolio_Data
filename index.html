@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahmed Mohsen | .NET Backend Developer</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="stylesheet" href="CSS/style.css?v=12.0">
+  <link rel="stylesheet" href="CSS/style.css?v=13.0">
 </head>
 
 <body>
@@ -17,36 +17,34 @@
     <a href="#hero" class="logo">Ahmed<span>.</span></a>
 
     <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <button class="close-btn" id="closeBtn" aria-label="Close Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><a href="#hero" class="nav-item active">Home</a></li>
+        <li><a href="#about" class="nav-item">About</a></li>
+        <li><a href="#skills" class="nav-item">Skills</a></li>
+        <li><a href="#projects" class="nav-item">Projects</a></li>
+        <li><a href="#experience" class="nav-item">Experience</a></li>
+        <li><a href="#education" class="nav-item">Education</a></li>
+        <li><a href="#contact" class="nav-item">Contact</a></li>
+      </ul>
+
       <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">☀️</button>
       
-      <!-- Hamburger Icon -->
       <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
-
-    <!-- Navigation Links / Sidebar -->
-    <ul class="nav-links" id="navLinks">
-      <button class="close-btn" id="closeBtn" aria-label="Close Menu">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <li><a href="#hero" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
   </div>
 </nav>
 
-<!-- Dark Overlay behind sidebar on mobile -->
 <div class="nav-overlay" id="navOverlay"></div>
 
 <main>
 
 <!-- ================= HERO ================= -->
-<section class="hero">
+<section id="hero" class="hero">
   <div class="hero-content">
     <h1>Ahmed Mohsen</h1>
     <h2><span class="typed-text"></span><span class="typing-cursor"></span></h2>
@@ -151,29 +149,6 @@
   </div>
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience" class="section">
-  <h2>Work Experience</h2>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>Programming Instructor</h3>
-      <h4>iSchool | 2025 – Present</h4>
-      <p>Teach programming fundamentals and core computer science concepts to middle and high school students.</p>
-    </div>
-
-    <div class="timeline-item">
-      <h3>Customer Service Agent (Digital Chat Group)</h3>
-      <h4>Telecom Egypt | 2023 – Present</h4>
-      <ul>
-        <li>Handled 50+ customer inquiries daily via digital chat, maintaining a 95% satisfaction rate.</li>
-        <li>Collaborated with cross-functional teams in an agile environment to improve response time by 15%.</li>
-        <li>Applied strong communication and technical problem-solving skills to resolve issues efficiently.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <!-- ================= PROJECTS ================= -->
 <section id="projects" class="section">
   <h2>Projects</h2>
@@ -208,6 +183,29 @@
   </div>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="section">
+  <h2>Work Experience</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Programming Instructor</h3>
+      <h4>iSchool | 2025 – Present</h4>
+      <p>Teach programming fundamentals and core computer science concepts to middle and high school students.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Customer Service Agent (Digital Chat Group)</h3>
+      <h4>Telecom Egypt | 2023 – Present</h4>
+      <ul>
+        <li>Handled 50+ customer inquiries daily via digital chat, maintaining a 95% satisfaction rate.</li>
+        <li>Collaborated with cross-functional teams in an agile environment to improve response time by 15%.</li>
+        <li>Applied strong communication and technical problem-solving skills to resolve issues efficiently.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ================= EDUCATION ================= -->
 <section id="education" class="section">
   <h2>Education</h2>
@@ -229,6 +227,7 @@
     </div>
   </div>
 </section>
+
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="section">
   <h2>Contact</h2>
@@ -283,10 +282,9 @@
 </section>
 
 </main>
-<!-- GSAP & ScrollTrigger CDN -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
 <script src="JS/main.js"></script>
 
 </body>
