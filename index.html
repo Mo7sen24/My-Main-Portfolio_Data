@@ -10,43 +10,47 @@
 
 <body>
 
-<main>
-
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar">
-  <div class="logo">Ahmed Mohsen</div>
+  <div class="nav-container">
+    <a href="#" class="logo">Ahmed<span>.Dev</span></a>
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-  <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">🌙</button>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">🌙</button>
+  </div>
 </nav>
+
+<main>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <h1>Ahmed Mohsen</h1>
-  <h2>Junior .NET Backend Developer</h2>
+  <div class="hero-content">
+    <h1>Ahmed Mohsen</h1>
+    <h2><span class="typed-text"></span><span class="typing-cursor"></span></h2>
 
-  <p>
-    Building robust, scalable backend services and RESTful Web APIs using C#, ASP.NET Core, 
-    Entity Framework Core, and SQL Server.
-  </p>
+    <p>
+      Building robust, scalable backend services and RESTful Web APIs using C#, ASP.NET Core, 
+      Entity Framework Core, and SQL Server.
+    </p>
 
-  <p>
-    <strong>Tech Stack:</strong> C# • ASP.NET Core • EF Core • SQL Server • RESTful APIs • JWT
-  </p>
-
-  <div class="hero-buttons">
-    <a href="#projects" class="btn primary">View Projects</a>
-    <a href="#contact" class="btn secondary">Contact Me</a>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn primary">View Projects</a>
+      <a href="#contact" class="btn secondary">Contact Me</a>
+    </div>
   </div>
 </section>
 
@@ -80,8 +84,10 @@
       </div>
     </div>
 
-    <div class="about-image">
-      <img src="assets/images/Me.jpeg" alt="Ahmed Mohsen - .NET Developer">
+    <div class="about-image-wrapper">
+      <div class="img-frame">
+        <img src="assets/images/Me.jpeg" alt="Ahmed Mohsen - .NET Developer">
+      </div>
     </div>
   </div>
 </section>
@@ -108,7 +114,7 @@
         <li>RESTful APIs</li>
         <li>Entity Framework Core</li>
         <li>LINQ</li>
-        <li>JWT Authentication & Authorization</li>
+        <li>JWT Authentication</li>
       </ul>
     </div>
 
@@ -118,7 +124,7 @@
         <li>OOP & SOLID Principles</li>
         <li>Clean Architecture</li>
         <li>Design Patterns</li>
-        <li>Database Design & Relationships</li>
+        <li>Database Design</li>
         <li>Unit Testing</li>
       </ul>
     </div>
@@ -129,7 +135,7 @@
         <li>Microsoft SQL Server</li>
         <li>Git / GitHub</li>
         <li>Postman</li>
-        <li>Visual Studio & VS Code</li>
+        <li>Visual Studio</li>
         <li>Docker Basics</li>
       </ul>
     </div>
@@ -164,12 +170,9 @@
   <h2>Projects</h2>
 
   <div class="projects-grid">
-
-    <!-- PROJECT 1 -->
     <div class="project-card">
       <h3>Telecom Customer Support System</h3>
       <p>Developed a RESTful backend system for managing customer support tickets, agents, customers, departments, and complaints.</p>
-      <p>Implemented secure authentication using JWT, clean architectural patterns, and Entity Framework Core with SQL Server.</p>
       <div class="project-tech">
         <span>C#</span>
         <span>ASP.NET Core Web API</span>
@@ -181,11 +184,9 @@
       <a href="https://github.com/mo7sen24" target="_blank" rel="noopener noreferrer" class="project-btn">View on GitHub</a>
     </div>
 
-    <!-- PROJECT 2 -->
     <div class="project-card">
       <h3>E-Commerce REST API</h3>
       <p>Built a comprehensive RESTful e-commerce backend system managing products, categories, customers, orders, and order details.</p>
-      <p>Designed database relationships, relational schemas, secure user authorization flow, and optimized data queries with LINQ.</p>
       <div class="project-tech">
         <span>C#</span>
         <span>ASP.NET Core</span>
@@ -195,13 +196,12 @@
       </div>
       <a href="https://github.com/mo7sen24" target="_blank" rel="noopener noreferrer" class="project-btn">View on GitHub</a>
     </div>
-
   </div>
 </section>
 
 <!-- ================= EDUCATION ================= -->
 <section id="education" class="section">
-  <h2>Education & Certifications</h2>
+  <h2>Education</h2>
 
   <div class="timeline">
     <div class="timeline-item">
@@ -252,7 +252,7 @@
 
       <div class="contact-box">
         <span>💼</span>
-        <h4>LinkedIn & GitHub</h4>
+        <h4>Links</h4>
         <p>
           <a href="https://linkedin.com/in/mo7sen24" target="_blank" rel="noopener noreferrer">LinkedIn</a> • 
           <a href="https://github.com/mo7sen24" target="_blank" rel="noopener noreferrer">GitHub</a>
