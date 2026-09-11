@@ -586,3 +586,11 @@ body.light .contact-box {
   perspective: 1000px;
   transition: transform 0.15s ease-out, box-shadow 0.3s ease;
 }
+/* Fix Card Overflow */
+.contact-card {
+  overflow: hidden;
+}
+
+.contact-box, .skill-card, .project-card {
+  will-change: transform;
+}
