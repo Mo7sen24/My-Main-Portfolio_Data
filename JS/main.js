@@ -1,7 +1,7 @@
 // Register GSAP Plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Scroll Progress Indicator
+// 1. Scroll Progress Bar
 window.addEventListener("scroll", () => {
   const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -10,7 +10,28 @@ window.addEventListener("scroll", () => {
   if (progressEl) progressEl.style.width = scrolled + "%";
 });
 
-// 2. Hero Section Animations
+// 2. Active Link on Scroll (Scrollspy)
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".nav-item");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    if (window.pageYOffset >= sectionTop - 120) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navItems.forEach((item) => {
+    item.classList.remove("active");
+    if (item.getAttribute("href") === `#${current}`) {
+      item.classList.add("active");
+    }
+  });
+});
+
+// 3. Hero Section Animation
 gsap.from(".hero h1", {
   duration: 1,
   y: 40,
@@ -27,7 +48,7 @@ gsap.from(".hero p, .hero-buttons", {
   delay: 0.3
 });
 
-// 3. Section Titles Scroll Animation
+// 4. Section Title Animation
 gsap.utils.toArray(".section h2").forEach((heading) => {
   gsap.from(heading, {
     scrollTrigger: {
@@ -41,7 +62,7 @@ gsap.utils.toArray(".section h2").forEach((heading) => {
   });
 });
 
-// 4. Clean Container Animation (بيحرك الكروت مع بعض بدون ما يلغبط موقعهم)
+// 5. Container Scroll Reveal
 gsap.utils.toArray(".skills-grid, .projects-grid, .timeline, .contact-card").forEach((container) => {
   gsap.from(container, {
     scrollTrigger: {
@@ -55,7 +76,7 @@ gsap.utils.toArray(".skills-grid, .projects-grid, .timeline, .contact-card").for
   });
 });
 
-// Theme Toggle Logic
+// 6. Theme Toggle Logic
 const themeBtn = document.getElementById("themeToggle");
 if (themeBtn) {
   if (localStorage.getItem("theme") === "light") {
@@ -73,7 +94,7 @@ if (themeBtn) {
   });
 }
 
-// Typewriter Effect
+// 7. Typewriter Effect
 const typedTextSpan = document.querySelector(".typed-text");
 const textToType = "Junior .NET Backend Developer";
 let charIndex = 0;
@@ -88,7 +109,8 @@ if (typedTextSpan) {
   }
   setTimeout(typeWriter, 300);
 }
-// Mobile Sidebar Toggle Logic
+
+// 8. Mobile Sidebar Toggle Logic
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");
 const navLinks = document.getElementById("navLinks");
@@ -97,7 +119,7 @@ const navOverlay = document.getElementById("navOverlay");
 function openSidebar() {
   navLinks?.classList.add("active");
   navOverlay?.classList.add("active");
-  document.body.style.overflow = "hidden"; // منع السكرول أثناء فتح القائمة
+  document.body.style.overflow = "hidden";
 }
 
 function closeSidebar() {
@@ -110,8 +132,6 @@ menuBtn?.addEventListener("click", openSidebar);
 closeBtn?.addEventListener("click", closeSidebar);
 navOverlay?.addEventListener("click", closeSidebar);
 
-// غلق القائمة تلقائياً عند الضغط على أي لينك
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("click", closeSidebar);
 });
-
