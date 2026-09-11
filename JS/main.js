@@ -10,26 +10,32 @@ window.addEventListener("scroll", () => {
   if (progressEl) progressEl.style.width = scrolled + "%";
 });
 
-// 2. Active Link on Scroll (Scrollspy)
-const sections = document.querySelectorAll("section");
+// 2. Active Link on Scroll (Scrollspy) - مُعدّل ومحسّن 100%
+const sections = document.querySelectorAll("section[id]");
 const navItems = document.querySelectorAll(".nav-item");
 
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    if (window.pageYOffset >= sectionTop - 120) {
-      current = section.getAttribute("id");
-    }
-  });
+function activateNavLink() {
+  let scrollY = window.pageYOffset;
 
-  navItems.forEach((item) => {
-    item.classList.remove("active");
-    if (item.getAttribute("href") === `#${current}`) {
-      item.classList.add("active");
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    // 150px offset لحساب ارتفاع الناف بار المباشر والتأكد من التنقل السلس
+    const sectionTop = current.offsetTop - 150; 
+    const sectionId = current.getAttribute("id");
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      navItems.forEach((item) => {
+        item.classList.remove("active");
+        if (item.getAttribute("href") === `#${sectionId}`) {
+          item.classList.add("active");
+        }
+      });
     }
   });
-});
+}
+
+window.addEventListener("scroll", activateNavLink);
+window.addEventListener("load", activateNavLink);
 
 // 3. Hero Section Animation
 gsap.from(".hero h1", {
