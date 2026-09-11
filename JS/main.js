@@ -20,7 +20,7 @@ if (themeBtn) {
   });
 }
 
-// Mobile Navigation Menu Toggle
+// Mobile Navigation Toggle
 const menuToggle = document.getElementById("menuToggle");
 const navLinksContainer = document.getElementById("navLinks");
 
@@ -36,26 +36,28 @@ if (menuToggle && navLinksContainer) {
   });
 }
 
-// Scroll reveal animation observer
+// Scroll reveal observer with dynamic staggering delay
 const observer = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => {
+    entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        setTimeout(() => {
+          entry.target.classList.add("show");
+        }, index * 100);
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.1 }
 );
 
 document
-  .querySelectorAll(".section, .project-card, .skill-card, .timeline-item")
+  .querySelectorAll(".section, .project-card, .skill-card, .timeline-item, .contact-box")
   .forEach((el) => {
     el.classList.add("hidden");
     observer.observe(el);
   });
 
-// Active nav link dynamic highlight
+// Active Navbar Highlight on Scroll
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");
 
@@ -88,7 +90,7 @@ if (navbar) {
   });
 }
 
-// Hero Title Typewriter Effect
+// Hero Typewriter Effect
 const heroTitle = document.querySelector(".hero h2");
 const textToType = "Junior .NET Backend Developer";
 let index = 0;
