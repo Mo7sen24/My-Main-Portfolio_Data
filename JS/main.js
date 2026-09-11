@@ -1,3 +1,4 @@
+// Theme toggle logic
 const themeBtn = document.getElementById("themeToggle");
 
 if (themeBtn) {
@@ -19,61 +20,85 @@ if (themeBtn) {
   });
 }
 
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
+// Mobile Navigation Menu Toggle
+const menuToggle = document.getElementById("menuToggle");
+const navLinksContainer = document.getElementById("navLinks");
+
+if (menuToggle && navLinksContainer) {
+  menuToggle.addEventListener("click", () => {
+    navLinksContainer.classList.toggle("open");
   });
-}, { threshold: 0.15 });
 
-document.querySelectorAll(".section, .project-card, .skill-card, .timeline-item, .cert-card")
-.forEach(el => {
-  el.classList.add("hidden");
-  observer.observe(el);
-});
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinksContainer.classList.remove("open");
+    });
+  });
+}
 
-// Active nav
-const sections = document.querySelectorAll("section");
+// Scroll reveal animation observer
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+document
+  .querySelectorAll(".section, .project-card, .skill-card, .timeline-item")
+  .forEach((el) => {
+    el.classList.add("hidden");
+    observer.observe(el);
+  });
+
+// Active nav link dynamic highlight
+const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
-  let current = "";
+  let currentSectionId = "";
 
-  sections.forEach(section => {
+  sections.forEach((section) => {
     const top = section.offsetTop - 150;
     const height = section.clientHeight;
 
-    if (pageYOffset >= top && pageYOffset < top + height) {
-      current = section.id;
+    if (window.scrollY >= top && window.scrollY < top + height) {
+      currentSectionId = section.getAttribute("id");
     }
   });
 
-  navLinks.forEach(link => {
+  navLinks.forEach((link) => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
+    if (link.getAttribute("href") === `#${currentSectionId}`) {
       link.classList.add("active");
     }
   });
 });
 
-// navbar shadow
+// Dynamic Navbar Shadow on Scroll
 const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
-  navbar.classList.toggle("scrolled", window.scrollY > 50);
-});
+if (navbar) {
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+  });
+}
 
-// typewriter
+// Hero Title Typewriter Effect
 const heroTitle = document.querySelector(".hero h2");
-const text = "Junior Data Engineer";
+const textToType = "Junior .NET Backend Developer";
 let index = 0;
 
 if (heroTitle) {
   heroTitle.textContent = "";
 
   function typeWriter() {
-    if (index < text.length) {
-      heroTitle.textContent += text[index++];
+    if (index < textToType.length) {
+      heroTitle.textContent += textToType[index++];
       setTimeout(typeWriter, 80);
     }
   }
