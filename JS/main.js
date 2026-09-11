@@ -88,3 +88,30 @@ if (typedTextSpan) {
   }
   setTimeout(typeWriter, 300);
 }
+// Mobile Sidebar Toggle Logic
+const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("closeBtn");
+const navLinks = document.getElementById("navLinks");
+const navOverlay = document.getElementById("navOverlay");
+
+function openSidebar() {
+  navLinks?.classList.add("active");
+  navOverlay?.classList.add("active");
+  document.body.style.overflow = "hidden"; // منع السكرول أثناء فتح القائمة
+}
+
+function closeSidebar() {
+  navLinks?.classList.remove("active");
+  navOverlay?.classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+menuBtn?.addEventListener("click", openSidebar);
+closeBtn?.addEventListener("click", closeSidebar);
+navOverlay?.addEventListener("click", closeSidebar);
+
+// غلق القائمة تلقائياً عند الضغط على أي لينك
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", closeSidebar);
+});
+
