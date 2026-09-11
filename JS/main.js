@@ -48,13 +48,14 @@ const animateGrid = (selector) => {
   gsap.from(selector, {
     scrollTrigger: {
       trigger: selector[0]?.parentElement || selector,
-      start: "top 80%",
+      start: "top 85%",
     },
     duration: 0.8,
-    y: 50,
+    y: 40,
     opacity: 0,
     stagger: 0.15,
-    ease: "power3.out"
+    ease: "power3.out",
+    clearProps: "transform" // السطر ده بيمسح أي تحريك بعد ما الانيميشن يخلص عشان الـ CSS يشتغل طبيعي
   });
 };
 
