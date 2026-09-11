@@ -211,8 +211,7 @@ main {
   transform: translateY(-4px);
   box-shadow: 0 10px 25px var(--shadow);
 }
-
-/* ================= ABOUT & IMAGE ================= */
+/* ================= ABOUT & IMAGE FIX ================= */
 .about-container {
   display: flex;
   flex-direction: row;
@@ -221,7 +220,9 @@ main {
   gap: 40px;
 }
 
-.about-text { flex: 1; }
+.about-text {
+  flex: 1;
+}
 
 .about-image-wrapper {
   flex-shrink: 0;
@@ -236,9 +237,12 @@ main {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  padding: 6px;
+  padding: 5px; /* سمك الإطار الملون */
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   box-shadow: 0 10px 25px var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -248,12 +252,10 @@ main {
   box-shadow: 0 20px 35px var(--shadow);
 }
 
-.img-frame img, 
-.about-image-wrapper img,
-img {
-  max-width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+.img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 50%;
   display: block;
 }
