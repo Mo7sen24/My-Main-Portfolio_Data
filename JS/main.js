@@ -1,109 +1,51 @@
-// Theme toggle logic
+// Dynamic Theme Toggle
 const themeBtn = document.getElementById("themeToggle");
 
 if (themeBtn) {
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    themeBtn.textContent = "☀️";
-  }
-
   themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-      themeBtn.textContent = "☀️";
-    } else {
-      localStorage.setItem("theme", "light");
-      themeBtn.textContent = "🌙";
-    }
+    document.body.classList.toggle("light");
+    const isLight = document.body.classList.contains("light");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+    themeBtn.textContent = isLight ? "🌙" : "☀️";
   });
 }
 
-// Mobile Navigation Toggle
-const menuToggle = document.getElementById("menuToggle");
-const navLinksContainer = document.getElementById("navLinks");
+// Staggered Scroll Observer
+const observerOptions = {
+  threshold: 0.15
+};
 
-if (menuToggle && navLinksContainer) {
-  menuToggle.addEventListener("click", () => {
-    navLinksContainer.classList.toggle("open");
-  });
-
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinksContainer.classList.remove("open");
-    });
-  });
-}
-
-// Scroll reveal observer with dynamic staggering delay
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add("show");
-        }, index * 100);
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
-
-document
-  .querySelectorAll(".section, .project-card, .skill-card, .timeline-item, .contact-box")
-  .forEach((el) => {
-    el.classList.add("hidden");
-    observer.observe(el);
-  });
-
-// Active Navbar Highlight on Scroll
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-  let currentSectionId = "";
-
-  sections.forEach((section) => {
-    const top = section.offsetTop - 150;
-    const height = section.clientHeight;
-
-    if (window.scrollY >= top && window.scrollY < top + height) {
-      currentSectionId = section.getAttribute("id");
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("show");
+      }, index * 80); // Staggering effect
     }
   });
+}, observerOptions);
 
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${currentSectionId}`) {
-      link.classList.add("active");
-    }
-  });
+document.querySelectorAll(".section, .project-card, .skill-card, .timeline-item").forEach((el) => {
+  el.classList.add("hidden");
+  scrollObserver.observe(el);
 });
 
-// Dynamic Navbar Shadow on Scroll
-const navbar = document.querySelector(".navbar");
-
-if (navbar) {
-  window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
-}
-
-// Hero Typewriter Effect
+// Typewriter Effect with Blinking Cursor
 const heroTitle = document.querySelector(".hero h2");
 const textToType = "Junior .NET Backend Developer";
-let index = 0;
+let charIndex = 0;
 
 if (heroTitle) {
-  heroTitle.textContent = "";
+  heroTitle.innerHTML = '<span class="typed-text"></span><span class="typing-cursor"></span>';
+  const typedTextSpan = heroTitle.querySelector(".typed-text");
 
   function typeWriter() {
-    if (index < textToType.length) {
-      heroTitle.textContent += textToType[index++];
-      setTimeout(typeWriter, 80);
+    if (charIndex < textToType.length) {
+      typedTextSpan.textContent += textToType.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeWriter, 70);
     }
   }
-
-  typeWriter();
+  
+  setTimeout(typeWriter, 500);
 }
