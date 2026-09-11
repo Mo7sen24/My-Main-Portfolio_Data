@@ -427,3 +427,27 @@ main {
   opacity: 1;
   transform: translateY(0);
 }
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), #60a5fa);
+  width: 0%;
+  z-index: 100000;
+  transition: width 0.1s linear;
+}
+
+/* Base Styles for GSAP Reveal */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* 3D Card Hover Effect */
+.skill-card, .project-card, .timeline-item, .contact-box {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
