@@ -33,12 +33,14 @@ if (menuToggle && navLinks) {
   });
 }
 
-// Scroll Animations
+// Scroll Reveal with Staggering Effect
 const observer = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => {
+    entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        setTimeout(() => {
+          entry.target.classList.add("show");
+        }, index * 80);
       }
     });
   },
@@ -46,7 +48,7 @@ const observer = new IntersectionObserver(
 );
 
 document
-  .querySelectorAll(".section, .project-card, .skill-card, .timeline-item")
+  .querySelectorAll(".section, .project-card, .skill-card, .timeline-item, .contact-box")
   .forEach((el) => {
     el.classList.add("hidden");
     observer.observe(el);
@@ -62,8 +64,8 @@ if (typedTextSpan) {
     if (charIndex < textToType.length) {
       typedTextSpan.textContent += textToType.charAt(charIndex);
       charIndex++;
-      setTimeout(typeWriter, 80);
+      setTimeout(typeWriter, 70);
     }
   }
-  setTimeout(typeWriter, 400);
+  setTimeout(typeWriter, 300);
 }
